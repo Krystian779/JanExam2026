@@ -27,5 +27,27 @@ namespace JanuaryExam2026
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Robot robot1d = new HouseholdRobot("HouseHold Robot","I can help with chores around the house" ,25 , 0, Robot.HouseholdSkill.Cleaning);
+            Robot robot2d = new HouseholdRobot("HouseHold Robot", "I can help with chores around the house", 25, 0, Robot.HouseholdSkill.Cleaning);
+            Robot robot3d = new HouseholdRobot("HouseHold Robot", "I can help with chores around the house", 25, 0, Robot.HouseholdSkill.Cleaning);
+            Robot robot4d = new DeliveryRobot("HouseHold Robot", "I can help with chores around the house", 25, 0, Robot.DeliveryMode.Walking);
+            Robot robot5d = new DeliveryRobot("HouseHold Robot", "I can help with chores around the house", 25, 0, Robot.DeliveryMode.Driving);
+            Robot robot6d = new DeliveryRobot("HouseHold Robot", "I can help with chores around the house", 25, 0, Robot.DeliveryMode.Flying);
+
+            List<Robot> robotsDescription = new List<Robot>();
+            robotsDescription.Add(robot1d);
+
+            lbxRobots.ItemsSource = robotsDescription;
+
+
+        }
+
+        private void btnAddRobot_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

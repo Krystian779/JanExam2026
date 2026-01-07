@@ -31,20 +31,91 @@ namespace JanuaryExam2026
             return (CurrentPower / PowerCapacityKWH) * 100;
         }
 
-        public string ReturnBatteryInformation( Robot PowerCapacityKWH, double currentPower)
+        public string ReturnBatteryInformation()
         {
-            return $"Battery Information Capacity {PowerCapacityKWH} {BatteryPercentage():F2}% Current Power {CurrentPower} ";
+            return $"Battery Information \nCapacity {PowerCapacityKWH} {BatteryPercentage():F2}%\nCurrent Power {CurrentPower} ";
         }
 
         public override string ToString()
         {
-            return $"Robot Name: {RobotName}, Power Capacity (kWh): {PowerCapacityKWH}, Current Power: {CurrentPower}, Battery Percentage: {BatteryPercentage():F2}%";
+            return $"I am a {RobotName}\n {RobotName} {DescribeRobot} \n{ReturnBatteryInformation()}";
         }
 
-        public void DescribeRobot()
+        public string DescribeRobot(Enum Skill)
         {
-            Console.WriteLine(ToString());
+            return $"I am a {RobotName}\n {RobotName} {Skill}  \n{ReturnBatteryInformation()}";
         }
+
 
     }
+
+    public class HouseholdRobot : Robot
+    {
+        public HouseholdSkill Skill { get; set; }
+        public string Description { get; set; }
+
+        private List<HouseholdSkill> skills = new List<HouseholdSkill>
+        {
+            HouseholdSkill.Cleaning,
+            HouseholdSkill.Cooking,
+            HouseholdSkill.Laundry,
+            HouseholdSkill.Gardening,
+            HouseholdSkill.ChildCare
+        };
+        public HouseholdRobot(string robotName, string description ,double powerCapacityKWH, double currentPower, HouseholdSkill skill)
+            : base(robotName, powerCapacityKWH, currentPower)
+        {
+            Skill = skill;
+            Description = description;
+        }
+
+        public void DownloadSkill(Enum Skill)
+        {
+
+        }
+        //public override string ToString()
+        //{
+           // return base.ToString() + $", \nSkill: {Skill}";
+        //}
+
+        //public override string DescribeRobot()
+        //{
+        //    return $"I am a {RobotName},\n {Description},\n Power Capacity (kWh): {PowerCapacityKWH},\n Current Power: {CurrentPower},\n Battery Percentage: {BatteryPercentage():F2}%";
+       // }
+    }
+
+    public class DeliveryRobot : Robot
+    {
+        public DeliveryMode Mode { get; set; }
+        public string Description { get; set; }
+
+        private List<HouseholdSkill> skills = new List<HouseholdSkill>
+        {
+            HouseholdSkill.Cleaning,
+            HouseholdSkill.Cooking,
+            HouseholdSkill.Laundry,
+            HouseholdSkill.Gardening,
+            HouseholdSkill.ChildCare
+        };
+        public DeliveryRobot(string robotName, string description, double powerCapacityKWH, double currentPower, DeliveryMode mode)
+            : base(robotName, powerCapacityKWH, currentPower)
+        {
+            Mode = mode;
+            Description = description;
+        }
+        //public override string ToString()
+        //{
+        // return base.ToString() + $", \nSkill: {Skill}";
+        //}
+
+        //public override string DescribeRobot()
+        //{
+        //    return $"I am a {RobotName},\n {Description},\n Power Capacity (kWh): {PowerCapacityKWH},\n Current Power: {CurrentPower},\n Battery Percentage: {BatteryPercentage():F2}%";
+        // }
+    }
+
+
+
+
+
 }
