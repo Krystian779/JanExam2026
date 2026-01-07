@@ -54,7 +54,7 @@ namespace JanuaryExam2026
         public HouseholdSkill Skill { get; set; }
         public string Description { get; set; }
 
-        private List<HouseholdSkill> skills = new List<HouseholdSkill>
+        private List<HouseholdSkill> Skills = new List<HouseholdSkill>
         {
             HouseholdSkill.Cleaning,
             HouseholdSkill.Cooking,
@@ -62,7 +62,7 @@ namespace JanuaryExam2026
             HouseholdSkill.Gardening,
             HouseholdSkill.ChildCare
         };
-        public HouseholdRobot(string robotName, string description ,double powerCapacityKWH, double currentPower, HouseholdSkill skill)
+        public HouseholdRobot(string robotName, string description ,double powerCapacityKWH, double currentPower,HouseholdSkill skill)
             : base(robotName, powerCapacityKWH, currentPower)
         {
             Skill = skill;
@@ -71,7 +71,7 @@ namespace JanuaryExam2026
 
         public void DownloadSkill(Enum Skill)
         {
-
+            Skills.Add(HouseholdSkill.Gardening);
         }
         //public override string ToString()
         //{
@@ -89,6 +89,8 @@ namespace JanuaryExam2026
         public DeliveryMode Mode { get; set; }
         public string Description { get; set; }
 
+        public double MaxloadKG { get; set; }
+
         private List<HouseholdSkill> skills = new List<HouseholdSkill>
         {
             HouseholdSkill.Cleaning,
@@ -97,25 +99,21 @@ namespace JanuaryExam2026
             HouseholdSkill.Gardening,
             HouseholdSkill.ChildCare
         };
-        public DeliveryRobot(string robotName, string description, double powerCapacityKWH, double currentPower, DeliveryMode mode)
+        public DeliveryRobot(string robotName, string description, double maxloadKG, double powerCapacityKWH, double currentPower, DeliveryMode mode)
             : base(robotName, powerCapacityKWH, currentPower)
         {
             Mode = mode;
             Description = description;
+            MaxloadKG = maxloadKG;
         }
-        //public override string ToString()
-        //{
-        // return base.ToString() + $", \nSkill: {Skill}";
-        //}
+        public override string ToString()
+        {
+         return base.ToString() + $", \nSkill: {Mode}";
+        }
 
         //public override string DescribeRobot()
         //{
         //    return $"I am a {RobotName},\n {Description},\n Power Capacity (kWh): {PowerCapacityKWH},\n Current Power: {CurrentPower},\n Battery Percentage: {BatteryPercentage():F2}%";
         // }
     }
-
-
-
-
-
 }
